@@ -1,14 +1,15 @@
 #include <iostream>
 using namespace std;
+typedef long long ll;
 int main (void) {
-    int X;
-    int Y;
-    int Z;
-    int ans = 0;
+    ll X;
+    ll Y;
+    ll Z;
+    ll ans = 0;
 
     cin >> X >> Y >> Z;
 
-    for (int i = 1; i <= X; i++) {
+    for (ll i = 1; i <= X; i++) {
         if (Y * i + Z * (i + 1) <= X) ans++;
     }
 
