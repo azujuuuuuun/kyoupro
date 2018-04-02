@@ -21,8 +21,9 @@ int main (void) {
     int subsum = 0;
     for (int i = 0; i < N; i++) {
         subsum += a[i];
-        if (subsum < sum / N * (i + 1)) ans++;
-        else if (a[i] < sum / N) ans++;
+        if (subsum != sum / N * (i + 1)) {
+            ans++;
+        }
     }
 
     cout << ans << endl;
