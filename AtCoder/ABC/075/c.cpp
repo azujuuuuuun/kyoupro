@@ -7,10 +7,13 @@ int N;
 int M;
 bool edge[M_MAX][M_MAX];
 int cnt = 0;
+bool visited[N_MAX];
 void dfs (int v) {
-    bool bridge = true;
+    visited[v] = true;
     for (int i = 0; i < N; i++) {
-        if (!visited[i]) bridge = false;
+        if (edge[v][i] && !visited[i]) {
+            dfs(i);
+        }
     }
 }
 
@@ -27,27 +30,35 @@ int main (void) {
     }
 
     for (int i = 0; i < M; i++) {
-        int ai;
-        int bi;
-        cin >> ai >> bi;
-        ai--;
-        bi--;
-        a[i] = ai;
-        b[i] = bi;
-        edge[ai][bi] = true;
-        edge[bi][ai] = true;
-    }
-
-
-    for (int i = 0; i < M; i++) {
-        for (int j = 0; i < N; i++) visited[i] = false;
-        edge[a[i]][b[i]] = false;
-        edge[b[i]][a[i]] = false;
-        visited[0] = true;
-        dfs(0);
+        cin >> a[i] >> b[i];
+        a[i]--;
+        b[i]--;
         edge[a[i]][b[i]] = true;
         edge[b[i]][a[i]] = true;
     }
+
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            visited[j] = false;
+        }
+        edge[a[i]][b[i]] = false;
+        edge[b[i]][a[i]] = false;
+        dfs(0);
+        bool bridge = true;
+        for (int i = 0; i < N; i++) {
+            if (!visited[i]) {
+                bridge = false;
+            }
+        }
+        if (bridge) {
+            cnt++;
+        }
+        edge[a[i]][b[i]] = true;
+        edge[b[i]][a[i]] = true;
+    }
+
+    int ans = M - cnt;
+    cout << ans << endl;
 
     return 0;
 }
