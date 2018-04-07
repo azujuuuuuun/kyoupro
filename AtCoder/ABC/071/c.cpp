@@ -6,8 +6,8 @@ typedef long long ll;
 const int N_MAX = pow(10, 5);
 int main (void) {
     int N;
-    int A[N_MAX];
-    int h = 0;
+    ll A[N_MAX];
+    ll h = 0;
 
     cin >> N;
     for (int i = 0; i < N; i++) cin >> A[i];
