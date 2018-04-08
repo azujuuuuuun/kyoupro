@@ -1,19 +1,20 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-typedef long long ll;
+typedef unsigned long long ull;
 int main (void) {
-    ll x;
-    ll y;
-    ll ans = 1;
+    ull x;
+    ull y;
+    ull ans = 0;
 
     cin >> x >> y;
 
-    while (x * pow(2, ans) <= y) {
+    while (x <= y) {
+        x *= 2;
         ans++;
     }
 
     cout << ans << endl;
-    
+
     return 0;
 }
