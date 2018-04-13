@@ -16,8 +16,19 @@ int main (void) {
         else other++;
     }
 
-    if (four + 1 >= two + other) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    if (two == 0) {
+        if (four >= other - 1) {
+            cout << "Yes" << endl;
+        } else {
+            cout << "No" << endl;
+        }
+    } else {
+        if (four >= other) {
+            cout << "Yes" << endl;
+        } else {
+            cout << "No" << endl;
+        }
+    }
 
     return 0;
 }
